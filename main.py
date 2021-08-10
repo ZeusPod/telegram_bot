@@ -42,6 +42,12 @@ load_dotenv()
 API_KEY =  os.getenv("API_KEY")
 bot = telebot.TeleBot(API_KEY)
 
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+    bot.reply_to(message, "Hola bienvenido al bot de notificaciones de de criptoaptivos")
+
+@bot.message_handler(commands=['help'])
+
 @bot.message_handler(commands=['slp'])
 def slp(message):
     coinsfile = open('coins.json', 'r')
